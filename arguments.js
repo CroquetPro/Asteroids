@@ -7,7 +7,7 @@ function sum(){
   return sum;
 }
 
-console.log(sum());
+
 
 Function.prototype.myBind =  function(){
   var args = [].slice.call(arguments);
@@ -24,7 +24,7 @@ Function.prototype.myBind =  function(){
 var curriedSum = function(numArgs) {
   var numbers = []
   function _curriedSum(num) {
-    numbers.concat(num);
+    numbers.push(num);
     if (numbers.length === numArgs) {
       var results = 0;
       numbers.forEach( function(el) {
@@ -35,12 +35,12 @@ var curriedSum = function(numArgs) {
       return _curriedSum;
     }
   };
-  return _curriedSum
+  return _curriedSum;
 };
 // Function.prototype.curry = function (numArgs) {
 //   var fn = this;
 //
 // };
 
-var sum = curriedSum(2);
-console.log(sum(5)(2));
+var sum = curriedSum(5);
+console.log(sum(5)(2)(3)(2)(0));
