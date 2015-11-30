@@ -1,9 +1,9 @@
 function sum(){
   var nums = [].slice.call(arguments);
   var sum = 0;
-  nums.forEach ( function(num){
+  nums.forEach(function(num) {
     sum += num;
-  })
+  });
   return sum;
 }
 
@@ -14,10 +14,10 @@ Function.prototype.myBind =  function(){
   var context = args[0];
   var fn = this;
   var leftOvers = args.slice(1);
-  return function(){
+  return function () {
     var other = [].slice.call(arguments);
     leftOvers = leftOvers.concat(other);
-    fn.apply(context, leftOvers);
+    return fn.apply(context, leftOvers);
   };
 };
 
@@ -40,13 +40,13 @@ var curriedSum = function(numArgs) {
 
 Function.prototype.curry = function (numArgs) {
   var fn = this;
-  var args = []
+  var args = [];
   function _curry(num) {
     args.push(num);
     // console.log(args);
     if (args.length === numArgs) {
       // console.log(fn);
-      return fn.apply(undefined, args);
+      return fn.apply(null, args);
     } else {
       return _curry;
     }

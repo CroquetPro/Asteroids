@@ -3,11 +3,17 @@
     window.Asteroids = {};
   }
 
-function MovingObject(pos, vel, radius, color){
-  this.pos = pos;
-  this.vel = vel;
-  this.radius = radius;
-  this.color = color;
+var MovingObject = Asteroids.MovingObject = function (obj){
+  for (var key in obj) {
+    this[key] = obj[key];
+  }
+
+
+
+  // this.pos = pos;
+  // this.vel = vel;
+  // this.radius = radius;
+  // this.color = color;
 }
 
 MovingObject.prototype.draw = function (ctx) {
@@ -27,8 +33,8 @@ MovingObject.prototype.draw = function (ctx) {
 };
 
 MovingObject.prototype.move = function () {
-  this.pos[0] += this.(vel[0]*0.01);
-  this.pos[1] += this.vel[1]*0.01;
+  this.pos[0] += this.vel[0] * 0.01;
+  this.pos[1] += this.vel[1] * 0.01;
 };
 
 
