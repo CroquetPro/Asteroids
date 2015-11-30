@@ -21,26 +21,26 @@ Function.prototype.myBind =  function(){
   };
 };
 
-function Cat(name) {
-  this.name = name;
+var curriedSum = function(numArgs) {
+  var numbers = []
+  function _curriedSum(num) {
+    numbers.concat(num);
+    if (numbers.length === numArgs) {
+      var results = 0;
+      numbers.forEach( function(el) {
+        results += el;
+      });
+      return results;
+    } else {
+      return _curriedSum;
+    }
+  };
+  return _curriedSum
 };
+// Function.prototype.curry = function (numArgs) {
+//   var fn = this;
+//
+// };
 
-Cat.prototype.says = function (sound) {
-  console.log(this.name + " says " + sound + "!");
-}
-
-markov = new Cat("Markov");
-breakfast = new Cat("Breakfast");
-
-markov.says("meow");
-// Markov says meow!
-
-markov.says.myBind(breakfast, "meow")();
-// Breakfast says meow!
-
-markov.says.myBind(breakfast)("meow");
-// Breakfast says meow!
-
-var notMarkovSays = markov.says.myBind(breakfast);
-notMarkovSays("meow");
-// Breakfast says meow!
+var sum = curriedSum(2);
+console.log(sum(5)(2));
