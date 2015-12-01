@@ -3,8 +3,8 @@
     window.Asteroids = {};
   }
 
-  var Asteroid = Asteroids.Asteroid = function (pos){
-    var radius = 100;
+  var Asteroid = Asteroids.Asteroid = function (pos, game){
+    var radius = 4;
     var color = "#000000";
     var vel = [Math.random() * 2 - 1, Math.random() * 2 - 1];
 
@@ -12,7 +12,8 @@
       pos: pos,
       vel: vel,
       radius: radius,
-      color: color
+      color: color,
+      game: game
     });
 }
 
